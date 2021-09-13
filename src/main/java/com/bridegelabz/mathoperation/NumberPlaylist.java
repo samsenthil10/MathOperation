@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class NumberPlaylist {
 
@@ -45,5 +46,8 @@ public class NumberPlaylist {
 		myNumberList.forEach(myListAction);
 
 		myNumberList.forEach(number->{System.out.println("Method5: foreach lambda implement value: "+number);});
+	
+		Function<Integer, Double> toDoubleFunction = Integer::doubleValue; 
+		myNumberList.forEach(number->{System.out.println("Method6: foreach lambda double value: "+toDoubleFunction.apply(number));});
 	}
 }
