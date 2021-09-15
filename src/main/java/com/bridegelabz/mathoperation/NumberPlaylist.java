@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class NumberPlaylist {
 
@@ -61,6 +62,11 @@ public class NumberPlaylist {
 		myNumberList.stream()
 					.map(toDoubleFunction)
 					.forEach(n-> {System.out.println("Method9: foreach:"+n);});
+		
+		List<Double> streamList = myNumberList.stream()
+								   .map(toDoubleFunction)
+								   .collect(Collectors.toList());
+		System.out.println("Method10:"+streamList);
 		
 	}
 }
