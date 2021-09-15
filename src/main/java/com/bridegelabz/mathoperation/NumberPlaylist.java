@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class NumberPlaylist {
@@ -15,7 +14,7 @@ public class NumberPlaylist {
 	public static void main(String[] args) {
 
 		List<Integer> myNumberList = new ArrayList<Integer>();
-		for(int index=0;index<5;index++) {
+		for(int index=5;index>0;index--) {
 			myNumberList.add(index);
 		}
 
@@ -107,5 +106,8 @@ public class NumberPlaylist {
 		System.out.println("Method15 All Even? :"+myNumberList.stream().allMatch(isEvenFunction));
 		System.out.println("Method15 Any Even? :"+myNumberList.stream().anyMatch(isEvenFunction));
 		System.out.println("Method15 None as multiple of six? :"+myNumberList.stream().noneMatch(n-> n>0 && n%6==0));
+
+		List<Integer> sortedList = myNumberList.stream().sorted().collect(Collectors.toList());
+		System.out.println("Method15 None as multiple of six? :"+sortedList);
 	}
 }
