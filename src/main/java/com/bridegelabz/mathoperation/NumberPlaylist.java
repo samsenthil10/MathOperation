@@ -1,6 +1,7 @@
 package com.bridegelabz.mathoperation;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -17,7 +18,7 @@ public class NumberPlaylist {
 		for(int index=0;index<5;index++) {
 			myNumberList.add(index);
 		}
-		
+
 		Iterator<Integer> iterator = myNumberList.iterator();
 		while(iterator.hasNext()) {
 
@@ -49,31 +50,37 @@ public class NumberPlaylist {
 		myNumberList.forEach(myListAction);
 
 		myNumberList.forEach(number->{System.out.println("Method5: foreach "+number+" lambda implement value: "+number);});
-	
+
 		Function<Integer, Double> toDoubleFunction = Integer::doubleValue; 
 		myNumberList.forEach(number->{System.out.println("Method6: foreach "+number+" lambda double value: "+toDoubleFunction.apply(number));});
-		
+
 		Predicate<Integer> isEvenFunction = number->number>0 && number%2==0;
 		myNumberList.forEach(number->{System.out.println("Method7: foreach "+number+" lambda check even : "+isEvenFunction.test(number));});
-		
-		
+
+
 		myNumberList.stream()
 		.forEach(n-> {System.out.println("Method8: foreach:"+n);});
-		
+
 		myNumberList.stream()
-					.map(toDoubleFunction)
-					.forEach(n-> {System.out.println("Method9: foreach:"+n);});
-		
+		.map(toDoubleFunction)
+		.forEach(n-> {System.out.println("Method9: foreach:"+n);});
+
 		List<Double> streamList = myNumberList.stream()
-								   .map(toDoubleFunction)
-								   .collect(Collectors.toList());
+				.map(toDoubleFunction)
+				.collect(Collectors.toList());
 		System.out.println("Method10:"+streamList);
-		
+
 		List<Double> evenStreamList = myNumberList.stream()
-									  .filter(isEvenFunction)
-									  .map(toDoubleFunction)
-									  .collect(Collectors.toList());
-		System.out.println("Method101:"+evenStreamList);
-		
+				.filter(isEvenFunction)
+				.map(toDoubleFunction)
+				.collect(Collectors.toList());
+		System.out.println("Method11:"+evenStreamList);
+
+
+		Double topValue = evenStreamList.stream()
+				.peek(n -> {System.out.println("Method12:"+n);})
+				.findFirst()
+				.orElse(null);
+		System.out.println("Method12:"+topValue);
 	}
 }
