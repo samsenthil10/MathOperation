@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class NumberPlaylist {
 
@@ -42,12 +43,17 @@ public class NumberPlaylist {
 			}
 		});
 
-		Consumer<Integer> myListAction=number->{System.out.println("Method4: foreach lambda implement value: "+number);};
+		Consumer<Integer> myListAction=number->{System.out.println("Method4: foreach "+number+" lambda implement value: "+number);};
 		myNumberList.forEach(myListAction);
 
-		myNumberList.forEach(number->{System.out.println("Method5: foreach lambda implement value: "+number);});
+		myNumberList.forEach(number->{System.out.println("Method5: foreach "+number+" lambda implement value: "+number);});
 	
 		Function<Integer, Double> toDoubleFunction = Integer::doubleValue; 
-		myNumberList.forEach(number->{System.out.println("Method6: foreach lambda double value: "+toDoubleFunction.apply(number));});
+		myNumberList.forEach(number->{System.out.println("Method6: foreach "+number+" lambda double value: "+toDoubleFunction.apply(number));});
+		
+		Predicate<Integer> isEvenFunction = number->number>0 && number%2==0;
+		myNumberList.forEach(number->{System.out.println("Method7: foreach "+number+" lambda check even : "+isEvenFunction.test(number));});
+	
+		
 	}
 }
