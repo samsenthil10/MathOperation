@@ -87,12 +87,21 @@ public class NumberPlaylist {
 				.filter(isEvenFunction)
 				.min(Comparator.comparing(Integer::intValue))
 				.orElse(null);
-		System.out.println("Method13:"+minValue);
+		System.out.println("Method13 Minimum:"+minValue);
 
 		Integer maxValue = myNumberList.stream()
 				.filter(isEvenFunction)
 				.max(Comparator.comparing(Integer::intValue))
 				.orElse(null);
-		System.out.println("Method13:"+maxValue);
+		System.out.println("Method13 Maximum:"+maxValue);
+		
+		Integer sum = myNumberList.stream()
+				.reduce(0,Integer::sum);
+		System.out.println("Method14 Sum:"+sum);
+		
+		long count = myNumberList.stream().count();
+		System.out.println("Method14 Count:"+count);
+	
+		System.out.println("Method14 Average:"+sum/count);
 	}
 }
