@@ -94,14 +94,18 @@ public class NumberPlaylist {
 				.max(Comparator.comparing(Integer::intValue))
 				.orElse(null);
 		System.out.println("Method13 Maximum:"+maxValue);
-		
+
 		Integer sum = myNumberList.stream()
 				.reduce(0,Integer::sum);
 		System.out.println("Method14 Sum:"+sum);
-		
+
 		long count = myNumberList.stream().count();
 		System.out.println("Method14 Count:"+count);
-	
+
 		System.out.println("Method14 Average:"+sum/count);
+
+		System.out.println("Method15 All Even? :"+myNumberList.stream().allMatch(isEvenFunction));
+		System.out.println("Method15 Any Even? :"+myNumberList.stream().anyMatch(isEvenFunction));
+		System.out.println("Method15 None as multiple of six? :"+myNumberList.stream().noneMatch(n-> n>0 && n%6==0));
 	}
 }
