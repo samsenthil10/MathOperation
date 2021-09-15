@@ -82,5 +82,17 @@ public class NumberPlaylist {
 				.findFirst()
 				.orElse(null);
 		System.out.println("Method12:"+topValue);
+
+		Integer minValue = myNumberList.stream()
+				.filter(isEvenFunction)
+				.min(Comparator.comparing(Integer::intValue))
+				.orElse(null);
+		System.out.println("Method13:"+minValue);
+
+		Integer maxValue = myNumberList.stream()
+				.filter(isEvenFunction)
+				.max(Comparator.comparing(Integer::intValue))
+				.orElse(null);
+		System.out.println("Method13:"+maxValue);
 	}
 }
