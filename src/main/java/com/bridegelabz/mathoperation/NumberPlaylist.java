@@ -53,7 +53,10 @@ public class NumberPlaylist {
 		
 		Predicate<Integer> isEvenFunction = number->number>0 && number%2==0;
 		myNumberList.forEach(number->{System.out.println("Method7: foreach "+number+" lambda check even : "+isEvenFunction.test(number));});
-	
+		
+		System.out.println();
+		myNumberList.stream()
+		.forEach(n-> {System.out.println(n);});
 		
 	}
 }
